@@ -2,14 +2,14 @@ import React from 'react'
 import { Link, Router } from 'react-router-dom'
 import Show from './Show'
 
-class Listing extends React.Component {
+class Reports extends React.Component {
 
   constructor(props) {
     super(props)
     this.doSearch = this.doSearch.bind(this)
-    this.state = { 
-      searchQuery: '', 
-      shows: [] 
+    this.state = {
+      searchQuery: '',
+      shows: []
     }
   }
 
@@ -55,11 +55,11 @@ class Listing extends React.Component {
 
           }
         </div>
-      
+
       </div>
     )
   }
 
 }
 
-export default Listing
+export default Reports;

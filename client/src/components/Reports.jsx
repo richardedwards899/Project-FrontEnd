@@ -7,53 +7,58 @@ class Reports extends React.Component {
   constructor(props) {
     super(props);
 
+    //Initialise state
+    this.state = {
+      reports: []
+    }
   }
 
   componentDidMount(){
-    var url = 'http://localhost:5000/api/shows'
-    var request = new XMLHttpRequest()
-    request.open('GET', url)
 
-    request.setRequestHeader('Content-Type', "application/json")
-    request.withCredentials = true
+    var request = new XMLHttpRequest();
+
+    request.open('GET', 'http://localhost:5000/api/reports');    // We want to get all reports for the logged in user...
+    request.setRequestHeader('Content-Type', "application/json");
+    request.withCredentials = true;
 
     request.onload = () => {
-       if(request.status === 200){
-        console.log("request: ", request.responseText)
-        var data = JSON.parse(request.responseText)
-        this.setState( { shows: data } )
-       } else{
-        console.log("Uh oh you're not logged in!")
-        this.props.history.goBack()
+
+       if(request.status === 200){  // If request is successful, get the reports and store into state
+
+        var reports = JSON.parse(request.responseText);
+        console.log("reports: ", reports);
+
+        this.setState({
+          reports: reports
+        });
+
+       } else {
+        console.log("Uh oh, you're not logged in!")
+        // this.props.history.goBack();  what's this doing?
        }
     }
     request.send(null)
   }
 
-  
-
   render(){
+
     return(
       <div className="listing">
         <nav>
-          <Link to='/' className='title'>notflix</Link>
-          <input className='search-box' type='text' placeholder='Search...' value={this.state.searchQuery} onChange={this.doSearch} />
+          <Link to='/' className='title'>Choose a report to edit</Link>
         </nav>
 
-        <div className='shows-container'>
+        <div>
           {
-            this.state.shows.filter((show) => `${show.title} ${show.description}`.toUpperCase().indexOf(this.state.searchQuery.toUpperCase()) >= 0)
-             .map((show) => (
-              <Show { ...show } key={show.programmeID}/>
-            ))
-
+            this.state.reports.map(function(report){
+              return <Report></Report>
+            })
           }
         </div>
 
       </div>
     )
   }
-
 }
 
 export default Reports;

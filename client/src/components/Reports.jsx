@@ -1,16 +1,12 @@
-import React from 'react'
-import { Link, Router } from 'react-router-dom'
-import Show from './Show'
+import React from 'react';
+import { Link, Router } from 'react-router-dom';
+import Report from './Report';
 
 class Reports extends React.Component {
 
   constructor(props) {
-    super(props)
-    this.doSearch = this.doSearch.bind(this)
-    this.state = {
-      searchQuery: '',
-      shows: []
-    }
+    super(props);
+
   }
 
   componentDidMount(){
@@ -34,9 +30,7 @@ class Reports extends React.Component {
     request.send(null)
   }
 
-  doSearch(event){
-    this.setState({searchQuery: event.target.value})
-  }
+  
 
   render(){
     return(

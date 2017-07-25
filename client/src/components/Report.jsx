@@ -1,7 +1,7 @@
 import React from 'react'
 import { string, number } from 'prop-types'
 
-const Show = (props) => (
+const Report = (props) => (
   <div className='show'>
     <img src={`images/${props.image}`} className='show-image' />
     <div className='show-details'>
@@ -20,4 +20,4 @@ Show.propTypes = {
 }
 
 
-export default Show
+export default Report;

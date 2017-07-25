@@ -1,4 +1,5 @@
 import React from 'react';
+import PanelList from './PanelList';
 // import { Link } from 'react-router-dom';
 
 class ReportGenerator extends React.Component{
@@ -14,6 +15,9 @@ class ReportGenerator extends React.Component{
 
     return (
       <div className='report_generator'>
+
+        <h2 className='title'>Report Generator</h2>
+        <PanelList report={this.props.report} />
 
       </div>
     );

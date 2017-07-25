@@ -1,9 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Report = (props) => (
-  <div className='report' onClick={props.onClick}>
-    <div className="reportTitle">{props.year}</div>
-  </div>
-)
+class Report extends React.Component{
+
+  constructor(props){
+    super(props);
+
+  }
+
+  render(){
+    return (
+      <div className='report'>
+        <Link to='/report_generator' className='reportTitle'>{this.props.report.year}</Link>
+      </div>
+    );
+  }
+}
 
 export default Report;

@@ -12,8 +12,6 @@ class Reports extends React.Component {
       reports: []
     }
 
-    //bind methods
-    this.displayReport = this.displayReport.bind(this);
   }
 
   componentDidMount(){
@@ -43,9 +41,6 @@ class Reports extends React.Component {
     request.send(null)
   }
 
-  displayReport(){
-    console.log('try to display report!');
-  }
 
   render(){
 
@@ -58,7 +53,7 @@ class Reports extends React.Component {
         <div>
           {
             this.state.reports.map(function(report, index){
-              return <Report key={index} createdAt={report.created_at} year={report.year} onClick={this.displayReport}/>
+              return <Report key={index} report={report}/>
             }.bind(this))
           }
         </div>

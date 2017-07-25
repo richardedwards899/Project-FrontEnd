@@ -16,6 +16,7 @@ class App extends React.Component{
         <div className='container'>
           <Route exact path="/" component={ Home } />
           <Route path='/reports' component={ Reports } />
+          <Route path='/report_generator' component={ ReportGenerator } />
         </div>
       </HashRouter>
     )

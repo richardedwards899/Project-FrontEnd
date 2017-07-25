@@ -35,7 +35,7 @@ class App extends React.Component{
       <HashRouter>
         <div className='container'>
           <Route exact path="/" component={ Home } />
-          <Route path='/reports' component={ Reports } />
+          {/* <Route path='/reports' component={ Reports } /> */}
           <Route path='/reports' component={ () => { return <Reports setReport={this.setReport} />} } />
           <Route path='/report_generator' component={ () => { return <ReportGenerator report={this.state.report} /> } }  />
         </div>

@@ -53,7 +53,7 @@ class Reports extends React.Component {
         <div>
           {
             this.state.reports.map(function(report, index){
-              return <Report key={index} report={report}/>
+              return <Report key={index} report={report} setReport={this.props.setReport}/>
             }.bind(this))
           }
         </div>

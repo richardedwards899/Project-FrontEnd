@@ -10,9 +10,8 @@ class Report extends React.Component{
 
   render(){
     return (
-      <div className='report'>
+      <div className='report' onClick={ () => { this.props.setReport(this)} }>
         <Link to='/report_generator' className='reportTitle'>
-
           {this.props.report.year}
         </Link>
       </div>

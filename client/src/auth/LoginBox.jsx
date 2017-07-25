@@ -7,7 +7,7 @@ import SignOut from './SignOut';
 class LoginBox extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
 
     //initialise the state
     this.state = {

@@ -11,6 +11,9 @@ class Reports extends React.Component {
     this.state = {
       reports: []
     }
+
+    //bind methods
+    this.displayReport = this.displayReport.bind(this);
   }
 
   componentDidMount(){
@@ -40,19 +43,23 @@ class Reports extends React.Component {
     request.send(null)
   }
 
+  displayReport(){
+    console.log('try to display report!');
+  }
+
   render(){
 
     return(
-      <div className="listing">
+      <div className="home">
         <nav>
-          <Link to='/' className='title'>Choose a report to edit</Link>
+          <Link to='/' className='smallTitle'>Choose a report to edit</Link>
         </nav>
 
         <div>
           {
-            this.state.reports.map(function(report){
-              return <Report></Report>
-            })
+            this.state.reports.map(function(report, index){
+              return <Report key={index} createdAt={report.created_at} year={report.year} onClick={this.displayReport}/>
+            }.bind(this))
           }
         </div>
 

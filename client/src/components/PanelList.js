@@ -26,10 +26,13 @@ class PanelList extends React.Component{
   }
 
   render(){
+    // console.log("Re-rendering PanelList using inputs[0]:", this.props.report.inputs[0]); //this is somehow out of date!
+    // console.log("Re-rendering PanelList using inputs[1]:", this.props.report.inputs[1]); //this is somehow out of date!
+
     return (
       <div className='panel_list'>
-        <InputPanel input={this.props.report.inputs[0]} responses={this.Q1responses}/>
-        <InputPanel input={this.props.report.inputs[1]} responses={this.Q2responses}/>
+        <InputPanel key={0} index={0} input={this.props.report.inputs[0]} responses={this.Q1responses}/>
+        <InputPanel key={1} index={1} input={this.props.report.inputs[1]} responses={this.Q2responses}/>
       </div>
     );
   }

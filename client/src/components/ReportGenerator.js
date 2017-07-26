@@ -10,7 +10,8 @@ class ReportGenerator extends React.Component{
 
   render(){
 
-    console.log(this.props);
+    console.log("Re-rendering in ReportGenerator: input[0] position:", this.props.report.inputs[0].position);  //is this sometimes out of date?
+    console.log("Re-rendering in ReportGenerator: input[1] position:", this.props.report.inputs[1].position);  //is this sometimes out of date?
 
     return (
       <div className='report_generator'>

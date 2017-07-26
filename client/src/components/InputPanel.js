@@ -27,7 +27,6 @@ class InputPanel extends React.Component{
 
   setPosition(number){
 
-    console.log('Received notice of a change to position: ', number);
     if (this.isValid(number)){
       this.setState({
         currentPosition: number
@@ -35,8 +34,8 @@ class InputPanel extends React.Component{
     }
   }
 
-  // On dismounting, needs to return back currentPosition
-  componentWillUnmount(){
+  // After the state has been updated, write this to the db.
+  componentDidUpdate(){
 
     const request = new XMLHttpRequest();
     const url = "http://localhost:5000/api/inputs/"+this.props.input.id+'/'+this.state.currentPosition;
@@ -49,17 +48,22 @@ class InputPanel extends React.Component{
 
       if(request.status === 200){
         const response = JSON.parse(request.responseText)
-        console.log('server says:', response);
+        console.log('Server has updated Input to:', response);
+      } else {
+        console.log("Server did not update Input, with status:", request.status);
       }
     }
     request.send(null);
   }
 
   render(){
+    //Check the position in props!
+    console.log('Re-rendering in InputPanel: Input position['+this.props.index+'] in state is ', this.state.currentPosition);
+
     return (
       <div className='input_panel'>
-        <h4>{this.props.input.name}</h4>
-        <Slider position={this.props.input.position} onChange={this.setPosition}/>
+        <p className="question-style">{this.props.input.name}</p>
+        <Slider position={this.state.currentPosition} onChange={this.setPosition}/>
         <p className='text_display'>{this.props.responses[this.state.currentPosition]}</p>
       </div>
     );

@@ -9,11 +9,6 @@ class InputPanel extends React.Component{
 
     //inititialise the state. Maps input positions to pieces of text.
     this.state = {
-        0: "This is piece of text associated with the 0 position.",
-       25: "This is piece of text associated with the 25 position.",
-       50: "This is piece of text associated with the 50 position.",
-       75: "This is piece of text associated with the 75 position.",
-      100: "This is piece of text associated with the 100 position.",
       currentPosition: this.props.input.position
     }
 
@@ -42,10 +37,6 @@ class InputPanel extends React.Component{
 
   // On dismounting, needs to return back currentPosition
   componentWillUnmount(){
-    console.log("Unmounting!  Time to write to the db!");
-    console.log('going to write back', this.state.currentPosition);
-    console.log('going to write back to report with id:', this.props.input.report_id);
-    console.log('going to write back to input with id: ', this.props.input.id);
 
     const request = new XMLHttpRequest();
     const url = "http://localhost:5000/api/inputs/"+this.props.input.id+'/'+this.state.currentPosition;
@@ -69,7 +60,7 @@ class InputPanel extends React.Component{
       <div className='input_panel'>
         <h4>{this.props.input.name}</h4>
         <Slider position={this.props.input.position} onChange={this.setPosition}/>
-        <p className='text_display'>{this.state[this.state.currentPosition]}</p>
+        <p className='text_display'>{this.props.responses[this.state.currentPosition]}</p>
       </div>
     );
   }

@@ -1,6 +1,5 @@
 import React from 'react';
 import PanelList from './PanelList';
-// import { Link } from 'react-router-dom';
 
 class ReportGenerator extends React.Component{
 

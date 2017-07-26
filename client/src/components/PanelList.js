@@ -6,8 +6,6 @@ class PanelList extends React.Component{
   constructor(props){
     super(props);
 
-    console.log('report::', this.props.report);
-
   }
 
   render(){

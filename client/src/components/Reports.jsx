@@ -45,7 +45,7 @@ class Reports extends React.Component {
   render(){
 
     return(
-      <div className="home">
+      <div>
         <nav>
           <Link to='/' className='smallTitle'>Choose a report to edit</Link>
         </nav>
